@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ฟอร์มเปิดเคส IT Support</title>
+  <meta name="description" content="แบบฟอร์มเปิดเคส Support – กรอกปัญหา ผู้ใช้ AnyDesk สิ่งที่แก้ไขแล้ว ส่งเข้า GitHub Issues หรืออีเมล" />
+
+  <style>
+    :root{
+      --bg:#f5f7fb; --panel:#ffffff; --card:#ffffff;
+      --text:#222; --muted:#555; --accent:#007bff; --ring:#4a90e2;
+      --border:#e6e8ee; --shadow:0 10px 24px rgba(18,38,63,.06);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);
+         font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    /* ----- Header ----- */
+    header{
+      position:sticky; top:0; z-index:10;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:saturate(140%) blur(8px);
+      border-bottom:1px solid var(--border)
+    }
+    .nav{
+      height:140px;
+      display:grid;
+      grid-template-columns:auto 1fr auto; /* ซ้าย | กลาง | ขวา */
+      align-items:center;
+      gap:16px;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .titleblock{display:flex;flex-direction:column}
+    .subtitle{color:var(--muted);font-size:13px;margin-top:-4px}
+
+    /* กล่องโลโก้ซ้าย-ขวา */
+    .logo-box{
+      height:100px; width:100px;
+      border-radius:12px; overflow:hidden;
+      background:#fff;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      display:grid; place-items:center;
+    }
+    .logo-box img{
+      max-height:96px; max-width:96px;
+      width:auto; height:auto;
+      object-fit:contain;
+      display:block;
+    }
+
+    /* ----- Hero text ----- */
+    .hero{padding:24px 0 8px}
+    .hero h1{margin:0 0 6px;font-size:32px}
+    .lead{color:var(--muted);margin:0}
+
+    /* ----- Card form ----- */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;
+          padding:20px;box-shadow:var(--shadow)}
+    .grid{display:grid;gap:18px}
+    .cols-2{grid-template-columns:1fr 1fr}
+    @media (max-width:860px){.cols-2{grid-template-columns:1fr}}
+
+    label{display:block;color:var(--muted);font-size:14px;margin-bottom:6px}
+    input,textarea,select{
+      width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);
+      background:#fff;color:var(--text);outline:none
+    }
+    input:focus,textarea:focus,select:focus{border-color:var(--ring);
+      box-shadow:0 0 0 3px rgba(74,144,226,.25)}
+
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    footer{padding:20px 0;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <!-- โลโก้ซ้าย -->
+      <div class="logo-box">
+        <img src="arunpat-logo.jpg" alt="Company Logo">
+      </div>
+
+      <!-- ชื่อกลาง -->
+      <div class="titleblock">
+        <strong>IT Support Desk</strong>
+        <span class="subtitle">เปิดเคส • ติดตามปัญหา • เข้าช่วยเหลือระยะไกล</span>
+      </div>
+
+      <!-- โลโก้ขวา -->
+      <div class="logo-box">
+        <img src="pipatporn-logo.jpg" alt="New Logo">
+      </div>
+    </div>
+  </header>
+
+  <!-- Intro -->
+  <section class="hero">
+    <div class="container">
+      <h1>ฟอร์มเปิดเคส IT Support</h1>
+      <p class="lead">กรอกข้อมูลให้ครบถ้วนเพื่อให้ทีมช่วยเหลือได้เร็วขึ้น (ส่งเข้า GitHub Issues หรืออีเมลซัพพอร์ต)</p>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section>
+    <div class="container card">
+      <form id="caseForm" class="grid cols-2">
+        <div>
+          <label>ชื่อผู้แจ้ง</label>
+          <input name="requester" placeholder="ชื่อ–นามสกุล">
+          <label>อีเมลติดต่อ</label>
+          <input name="email" type="email" placeholder="you@example.com">
+          <label>เบอร์ติดต่อ</label>
+          <input name="phone" placeholder="0812345678">
+          <label>ทีม/แผนก</label>
+          <input name="department" placeholder="ฝ่ายไอที">
+          <label>ความรุนแรง</label>
+          <select name="severity">
+            <option value="P3">P3 – ทั่วไป</option>
+            <option value="P2">P2 – กระทบการทำงานบางส่วน</option>
+            <option value="P1">P1 – ระบบหยุดชะงัก/ผู้ใช้จำนวนมาก</option>
+          </select>
+        </div>
+
+        <div>
+          <label>ผู้ใช้ที่ได้รับผลกระทบ (Username/Email)</label>
+          <input name="affected_user" placeholder="user@company.com">
+          <label>เครื่อง/อุปกรณ์</label>
+          <input name="device" placeholder="รุ่น, หมายเลขทรัพย์สิน, ระบบปฏิบัติการ ฯลฯ">
+          <label>AnyDesk ID</label>
+          <input name="anydesk" placeholder="เช่น 123 456 789">
+          <label>สรุปปัญหา</label>
+          <input name="summary" placeholder="เช่น Outlook ส่งเมลไม่ได้">
+        </div>
+
+        <div style="grid-column:1/-1">
+          <label>รายละเอียดปัญหา</label>
+          <textarea name="details" rows="4" placeholder="เกิดอะไรขึ้น, เมื่อไหร่, มีข้อความ error อะไร"></textarea>
+
+          <label style="margin-top:10px">สิ่งที่ได้ลองแก้ไขแล้ว</label>
+          <textarea name="attempts" rows="3" placeholder="รีสตาร์ท, ลบ cache, ทดสอบบนอีกเครื่อง ฯลฯ"></textarea>
+
+          <label style="margin-top:10px">ลิงก์/ไฟล์แนบ (ภาพหน้าจอ, Log)</label>
+          <input name="attachments" placeholder="ลิงก์ OneDrive/SharePoint/Google Drive">
+
+          <div class="actions">
+            <button class="btn" type="button" id="submitGithub">ส่งเข้า GitHub Issues</button>
+            <button class="btn outline" type="button" id="submitMail">ส่งทางอีเมล</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="year"></span> IT Support Desk • ติดต่อ:
+      <a id="contactEmail" href="#">support@example.com</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const GITHUB_REPO   = 'yourname/support';
+    const DEFAULT_EMAIL = 'support@example.com';
+
+    const issuesLink = document.getElementById('issuesLink');
+    if(issuesLink) issuesLink.href = `https://github.com/${GITHUB_REPO}/issues`;
+
+    const contactEmail = document.getElementById('contactEmail');
+    contactEmail.href = `mailto:${DEFAULT_EMAIL}`;
+    contactEmail.textContent = DEFAULT_EMAIL;
+
+    const collect = () => Object.fromEntries(new FormData(document.getElementById('caseForm')).entries());
+
+    function buildIssueUrl(d){
+      const title = `[${d.severity||'P3'}] ${d.summary||'ไม่มีหัวข้อ'} — ${d.affected_user||d.requester||'ไม่ระบุผู้ใช้'}`;
+      const body = [
+        `**ผู้แจ้ง:** ${d.requester||'-'}  `,
+        `**อีเมล:** ${d.email||'-'}  `,
+        `**เบอร์:** ${d.phone||'-'}  `,
+        `**แผนก:** ${d.department||'-'}  `,
+        `**ผู้ใช้ที่ได้รับผลกระทบ:** ${d.affected_user||'-'}  `,
+        `**อุปกรณ์:** ${d.device||'-'}  `,
+        `**AnyDesk ID:** ${d.anydesk||'-'}  `,
+        `**สรุปปัญหา:** ${d.summary||'-'}  `,
+        `\n---\n`,
+        `### รายละเอียดปัญหา\n${d.details||'-'}\n`,
+        `### สิ่งที่ได้ลองแก้ไขแล้ว\n${d.attempts||'-'}\n`,
+        `### ไฟล์แนบ/ลิงก์\n${d.attachments||'-'}\n`,
+        `\n> ส่งจากหน้าเว็บ Support (${location.href}) เวลา ${new Date().toLocaleString()}\n`
+      ].join('\n');
+      const params = new URLSearchParams({title, body, labels:'support'});
+      return `https://github.com/${GITHUB_REPO}/issues/new?${params.toString()}`;
+    }
+
+    document.getElementById('submitGithub').addEventListener('click',()=>{
+      if(!GITHUB_REPO || GITHUB_REPO==='yourname/support'){
+        alert('โปรดตั้งค่า GITHUB_REPO ให้ถูกต้องในสคริปต์');
+        return;
+      }
+      window.open(buildIssueUrl(collect()), '_blank');
+    });
+
+    document.getElementById('submitMail').addEventListener('click',()=>{
+      const d = collect();
+      const subject = `[${d.severity||'P3'}] ${d.summary||'Support Case'}`;
+      const body = [
+        `ผู้แจ้ง: ${d.requester||'-'}`,
+        `อีเมล: ${d.email||'-'}`,
+        `เบอร์: ${d.phone||'-'}`,
+        `แผนก: ${d.department||'-'}`,
+        `ผู้ใช้ที่ได้รับผลกระทบ: ${d.affected_user||'-'}`,
+        `อุปกรณ์: ${d.device||'-'}`,
+        `AnyDesk ID: ${d.anydesk||'-'}`,
+        `สรุปปัญหา: ${d.summary||'-'}`,
+        '',
+        `รายละเอียดปัญหา:\n${d.details||'-'}`,
+        `สิ่งที่ได้ลองแก้ไขแล้ว:\n${d.attempts||'-'}`,
+        `ไฟล์แนบ/ลิงก์:\n${d.attachments||'-'}`
+      ].join('\n');
+      location.href = `mailto:${DEFAULT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</body>
+</html>
