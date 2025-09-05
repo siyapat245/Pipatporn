@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ศูนย์เปิดเคส IT Support</title>
+  <style>
+    body {font-family: sans-serif; background:#f5f5f5; margin:0; padding:20px;}
+    h1 {color:#333;}
+    form {background:#fff; padding:20px; border-radius:8px; max-width:600px;}
+    label {display:block; margin-top:12px; font-weight:bold;}
+    input, textarea, select {width:100%; padding:10px; margin-top:6px; border:1px solid #ccc; border-radius:6px;}
+    button {margin-top:16px; padding:12px 20px; background:#007bff; color:#fff; border:none; border-radius:6px; cursor:pointer;}
+    button:hover {background:#0056b3;}
+  </style>
+</head>
+<body>
+  <h1>แบบฟอร์มเปิดเคส IT Support</h1>
+  <form action="mailto:support@example.com" method="post" enctype="text/plain">
+    <label>ชื่อผู้แจ้ง</label>
+    <input type="text" name="requester" placeholder="ชื่อ-นามสกุล">
+
+    <label>อีเมลติดต่อ</label>
+    <input type="email" name="email" placeholder="you@example.com">
+
+    <label>ผู้ใช้ที่ได้รับผลกระทบ (Username/Email)</label>
+    <input type="text" name="affected_user" placeholder="user@company.com">
+
+    <label>AnyDesk ID</label>
+    <input type="text" name="anydesk" placeholder="เช่น 123 456 789">
+
+    <label>สรุปปัญหา</label>
+    <input type="text" name="summary" placeholder="Outlook ส่งเมลไม่ได้">
+
+    <label>รายละเอียดปัญหา</label>
+    <textarea name="details" rows="4" placeholder="เกิดอะไรขึ้น, มี error อะไร"></textarea>
+
+    <label>สิ่งที่ได้ลองแก้ไขแล้ว</label>
+    <textarea name="attempts" rows="3" placeholder="รีสตาร์ท, ลบ cache, ทดสอบบนอีกเครื่อง..."></textarea>
+
+    <button type="submit">ส่งเคส</button>
+  </form>
+</body>
+</html>
