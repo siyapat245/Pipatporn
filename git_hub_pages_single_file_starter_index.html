@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>เว็บไซต์ส่วนตัว</title>
+  <meta name="description" content="โฮมเพจส่วนตัวบน GitHub Pages">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+  <style>
+    :root{--bg:#0b1020;--card:#111833;--accent:#6ea8fe;--text:#e6e9f2;--muted:#9aa3b2;--ring:#2441a5}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:radial-gradient(1200px 600px at 10% -10%,#1a244a 0%,transparent 60%),radial-gradient(1000px 600px at 110% 10%,#16203d 0%,transparent 50%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:14px;background:var(--accent);color:#0a0f1f;font-weight:600;transition:transform .15s ease,box-shadow .15s ease}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(110,168,254,.25)}
+    .btn-outline{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.15)}
+    header.nav{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.6);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-size:18px;font-weight:700;letter-spacing:.3px}
+    .menu{display:flex;gap:18px}
+    .menu a{padding:8px 10px;border-radius:10px;color:var(--muted)}
+    .menu a.active,.menu a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+    .toggle{display:none;appearance:none;border:1px solid rgba(255,255,255,.15);background:transparent;color:var(--text);padding:8px 12px;border-radius:10px}
+    .hero{padding:80px 0 40px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+    .title{font-size:44px;line-height:1.15;margin:0 0 12px}
+    .lead{color:var(--muted);font-size:18px;margin:0 0 22px}
+    .cta{display:flex;gap:14px;flex-wrap:wrap}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:18px}
+    .preview{aspect-ratio:4/3;border:1px dashed rgba(255,255,255,.15);border-radius:16px;background:linear-gradient(140deg,rgba(110,168,254,.15),transparent 40%),linear-gradient(25deg,rgba(255,255,255,.06),transparent 60%)}
+    section{padding:40px 0}
+    h2{font-size:26px;margin:0 0 14px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    .item{padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02))}
+    .item h3{margin:0 0 8px;font-size:18px}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px}
+    .kpis .pill{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);font-size:13px;color:var(--muted)}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);color:var(--text);outline:none}
+    input:focus,textarea:focus{border-color:var(--ring);box-shadow:0 0 0 3px rgba(36,65,165,.25)}
+    footer{padding:26px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted)}
+    @media (max-width:920px){.hero-grid{grid-template-columns:1fr}}
+    @media (max-width:760px){.menu{position:absolute;inset:64px 16px auto 16px;flex-direction:column;padding:12px;background:rgba(11,16,32,.9);border:1px solid rgba(255,255,255,.1);border-radius:14px;display:none}.menu.open{display:flex}.toggle{display:inline-flex}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-wrap">
+      <div class="brand">ชื่อของคุณ</div>
+      <nav>
+        <button class="toggle" id="navToggle">เมนู</button>
+        <div class="menu" id="navMenu">
+          <a href="#about">เกี่ยวกับ</a>
+          <a href="#projects">ผลงาน</a>
+          <a href="#contact">ติดต่อ</a>
+          <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1 class="title">เว็บไซต์ส่วนตัวสำหรับแสดงผลงานและติดต่อ</h1>
+        <p class="lead">เทมเพลตหน้าเดียวสำหรับใช้งานบน GitHub Pages ปรับแก้ข้อความ สี และลิงก์ให้ตรงกับโปรไฟล์ของคุณ</p>
+        <div class="cta">
+          <a class="btn" href="#projects">ดูผลงาน</a>
+          <a class="btn btn-outline" href="https://github.com/new" target="_blank" rel="noopener">สร้าง Repository</a>
+        </div>
+        <div class="kpis">
+          <span class="pill">โหลดเร็ว</span>
+          <span class="pill">รองรับมือถือ</span>
+          <span class="pill">แก้ไขง่าย</span>
+        </div>
+      </div>
+      <div class="card preview"></div>
+    </div>
+  </section>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <h2>เกี่ยวกับ</h2>
+        <p class="muted">แนะนำตัวสั้น ๆ ระบุทักษะ เครื่องมือที่ถนัด และประเภทงานที่รับทำ เช่น Cloud, DevOps, Data, Network, Security</p>
+        <div class="grid cols-3" style="margin-top:14px">
+          <div class="item"><h3>ทักษะหลัก</h3><p class="muted">Azure, Microsoft 365, Proxmox, Power Automate, Python</p></div>
+          <div class="item"><h3>ความสนใจ</h3><p class="muted">Automation, Observability, Governance, FinOps</p></div>
+          <div class="item"><h3>ใบรับรอง</h3><p class="muted">AZ‑104, AZ‑305, DP‑100, AZ‑800, AZ‑801</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2>ผลงาน</h2>
+        <p class="muted">ตัวอย่างงานหรือ Repository ที่อยากโปรโมต</p>
+        <div class="grid cols-3" style="margin-top:14px">
+          <a class="item" href="https://github.com/" target="_blank" rel="noopener"><h3>โปรเจ็กต์ A</h3><p class="muted">สรุปสั้น ๆ และเทคโนโลยีที่ใช้</p></a>
+          <a class="item" href="https://github.com/" target="_blank" rel="noopener"><h3>โปรเจ็กต์ B</h3><p class="muted">จุดเด่น ผลลัพธ์ หรือตัวเลข</p></a>
+          <a class="item" href="https://github.com/" target="_blank" rel="noopener"><h3>โปรเจ็กต์ C</h3><p class="muted">ลิงก์ไปที่ Repo หรือ Demo</p></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>ติดต่อ</h2>
+        <p class="muted">แก้ไขอีเมลและลิงก์ด้านล่างให้เป็นของคุณ</p>
+        <div class="contact" style="margin-top:10px">
+          <form action="mailto:you@example.com" method="post" enctype="text/plain" class="item">
+            <input name="name" placeholder="ชื่อ">
+            <input name="email" placeholder="อีเมล" type="email" style="margin-top:10px">
+            <textarea name="message" placeholder="ข้อความ" rows="5" style="margin-top:10px"></textarea>
+            <button class="btn" style="margin-top:10px" type="submit">ส่งข้อความ</button>
+          </form>
+          <div class="item">
+            <h3>ลิงก์</h3>
+            <p><a href="mailto:you@example.com">you@example.com</a></p>
+            <p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></p>
+            <p><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> ชื่อของคุณ</div>
+  </footer>
+
+  <script>
+    const navToggle=document.getElementById("navToggle");
+    const navMenu=document.getElementById("navMenu");
+    navToggle&&navToggle.addEventListener("click",()=>{navMenu.classList.toggle("open")});
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",e=>{const t=document.querySelector(a.getAttribute("href"));if(!t)return;e.preventDefault();t.scrollIntoView({behavior:"smooth"});navMenu.classList.remove("open")})});
+    document.getElementById("year").textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
